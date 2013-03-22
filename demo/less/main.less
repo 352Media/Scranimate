@@ -1,0 +1,99 @@
+﻿// Bootstrap mixins
+// You don't need to use these if you don't want to!
+@import "variables";
+@import "mixins";
+
+
+
+//Site styles
+header {
+	padding:300px 0;
+}
+footer {
+	height:200px;
+}
+
+
+
+// Set some Scranimation defaults
+// You don't need to use these if you don't want to!
+.scranimate {
+	position:relative;
+}
+.animated {
+	.transition(all 1s); //default
+}
+
+
+
+// Scranimations
+// Always design the "default" as the end position. If JS fails, your design will still work.
+.demo-1 {
+	height:320px;
+	background-color:black;
+
+	.welcome-message {
+		position:absolute;
+		left:50%;
+		width:560px;
+		height:100px;
+		margin-left:-280px;
+		margin-top:100px;
+
+		color:white;
+		font-size:100px;
+		line-height:1em;
+		font-weight:bold;
+		text-align:center;
+
+		&.pre-animated { // Here is where you set starting values
+			.scale(0); 
+		}
+	}
+}
+.demo-2 {
+	height:320px;
+	background-color:#39c;
+
+	.line-1 {
+		position:absolute;
+		left:50%;
+		width:580px;
+		height:100px;
+		margin-left:-290px;
+		margin-top:100px;
+
+		color:black;
+		font-size:30px;
+		line-height:1.5em;
+		font-weight:bold;
+		text-align:center;
+
+		&.pre-animated { // Here is where you set starting values
+			opacity:0;
+			margin-top:120px;
+		}
+	}
+	.line-2 {
+		position:absolute;
+		left:50%;
+		width:520px;
+		height:100px;
+		margin-left:-260px;
+		margin-top:130px;
+
+		color:white;
+		font-size:60px;
+		line-height:1.5em;
+		font-weight:bold;
+		text-align:center;
+
+		&.pre-animated { // Here is where you set starting values
+			opacity:0;
+			margin-top:150px;
+		}
+		&.animated {
+			.transition-delay(0.5s); // Add a custom animation to a specific layer
+		}
+	}
+}
