@@ -4,7 +4,6 @@
 	//Single event for all scranimated elements
 	//We simply use the plugin to add new elements to the list
 	$(window).scroll(function (e) {
-		console.log($elements.length);
 		if ($elements.length > 0) {
 			var scrollPosition = $(this).scrollTop();
 			var windowHeight = $(window).height();
@@ -22,6 +21,9 @@
 			});
 		}
 	});
+
+	//prevent flicker in chrome
+	if ($('body').css('-webkit-transform') == 'none') $('body').css('-webkit-transform', 'translate3d(0, 0, 0)');
 
 	$.scranimate = function (el, options) {
 		var base = this;
@@ -47,6 +49,8 @@
 
 			p.$el.addClass('under-fold').find('.animate-me').addClass('pre-animated');
 			$elements = $elements.add(p.$el);
+
+			$(window).scroll();
 		});
 	};
 
