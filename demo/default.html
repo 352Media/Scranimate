@@ -1,41 +1,42 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Animation Proofs</title>
+	<title>Scranimate</title>
 
 	<!-- Scranimate doesn't require Bootstrap, but you might find the reset, mixins and scaffolding useful. -->
-	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
 
 	<link href="css/main.css" rel="stylesheet" />
 </head>
 <body>
 
-	<div class="header">
-		<h1 class="text-center">Scranimate.</h1>
-		<p class="text-center">Scroll down the page to fire animations as they come into view.</p>
-		<p class="text-center">Scroll back up to reset them as they exit view.</p>
+	<div class="header text-center">
+		<h1>Scranimate.</h1>
+		<p>Scroll down the page to fire animations as they come into view.</p>
+		<p>Scroll back up to reset them as they exit view.</p>
 	</div>
 
-	<!-- Make sure you include the "animate-me" class on any elements you want to animate! -->
-
-	<div class="scranimate demo-1">
-		<div class="welcome-message animate-me">Hello there.</div>
+	<div class="demo-1">
+		<div class="welcome-message">Hello there.</div>
 	</div>
 
-	<div class="scranimate demo-2">
-		<div class="line-1 animate-me">Create animated effects when you scroll</div>
-		<div class="line-2 animate-me">using only CSS3.</div>
+	<!-- To fire the "above-fold" early, override the height with your own "scranimate-at" pixel value -->
+	<!-- TODO: Improve this with a "scranimate-offset" parameter instead, allowing provision for top and bottom. -->
+
+	<div class="demo-2" data-scranimate-at="200">
+		<div class="line-1">Create animated effects when you scroll</div>
+		<div class="line-2">using only CSS3.</div>
 	</div>
 
 	<div class="footer"></div>
 	
 	<!-- Scranimate requires jQuery, but you already had that installed, right? -->
-	<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 
 	<script src="../scranimate.js"></script>
 	<script>
 		$(function () {
-			$('.scranimate').scranimate(); //Feel free to use whatever selector you wish.
+			$('.demo-1, .demo-2').scranimate(); //Feel free to use whatever selector you wish.
 		});
 	</script>
 </body>

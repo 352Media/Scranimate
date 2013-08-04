@@ -1,9 +1,7 @@
 ﻿// Bootstrap mixins
-// You don't need to use these if you don't want to!
+// You don't need to use these if you don't want to, but they sure make vendor prefixes easier!
 @import "variables";
 @import "mixins";
-
-
 
 //Site styles
 .header {
@@ -13,18 +11,21 @@
 	height:200px;
 }
 
-
-
-// Set some Scranimation defaults
-// You don't need to use these if you don't want to!
-.scranimate {
+// This is a nice starter for getting absolutely positioned animations up and running.
+// You'll probably want to break out the individual transitions to optimize performance later.
+.demo-1, 
+.demo-2 {
 	position:relative;
-}
-.animated {
-	.transition(all 1s); //default
-}
 
+	* {
+		position:absolute;
+	}
 
+	&.above-fold * {
+		.transition(all 1s);
+		.backface-visibility(hidden);
+	}
+}
 
 // Scranimations
 // Always design the "default" as the end position. If JS fails, your design will still work.
@@ -33,7 +34,6 @@
 	background-color:black;
 
 	.welcome-message {
-		position:absolute;
 		left:50%;
 		width:560px;
 		height:100px;
@@ -45,9 +45,11 @@
 		line-height:1em;
 		font-weight:bold;
 		text-align:center;
+	}
 
-		&.pre-animated { // Here is where you set starting values
-			.scale(0); 
+	&.below-fold { // Here is where you set starting values
+		.welcome-message {
+			.scale(0);
 		}
 	}
 }
@@ -56,7 +58,6 @@
 	background-color:#39c;
 
 	.line-1 {
-		position:absolute;
 		left:50%;
 		width:580px;
 		height:100px;
@@ -68,14 +69,8 @@
 		line-height:1.5em;
 		font-weight:bold;
 		text-align:center;
-
-		&.pre-animated { // Here is where you set starting values
-			opacity:0;
-			margin-top:120px;
-		}
 	}
 	.line-2 {
-		position:absolute;
 		left:50%;
 		width:520px;
 		height:100px;
@@ -87,13 +82,22 @@
 		line-height:1.5em;
 		font-weight:bold;
 		text-align:center;
+	}
 
-		&.pre-animated { // Here is where you set starting values
+	&.below-fold { // Here is where you set starting values
+		.line-1 {
+			opacity:0;
+			margin-top:120px;
+		}
+		.line-2 {
 			opacity:0;
 			margin-top:150px;
 		}
-		&.animated {
-			.transition-delay(0.5s); // Add a custom animation to a specific layer
+	}
+
+	&.above-fold { // Add custom animations to specific layers
+		.line-2 {
+			.transition-delay(0.5s);
 		}
 	}
 }
